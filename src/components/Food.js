@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Grid, Panel, Button} from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
+import Counter from './Counter';
+import Checkout from './Checkout';
+import {Link, Switch, Route} from 'react-router-dom'
 
 class Food extends Component {
     constructor(props){
@@ -21,17 +24,20 @@ class Food extends Component {
                                     <p >Precio: {foo.price}</p>
                                 </div>
                                 <Button
+                                    // aqui detona evento
+                                    onClick={this.props.prueba}
+                            
                                     className ='col-md-3'
                                     bsStyle="success"
                                     bsSize="large"
                                     target="_blank">
-                                    Agregar
+                                     <Link to='/Counter'>Agregar</ Link>
                                 </Button>
                             </div>
                         </div>)
                     })}
 
-                    
+                                    
                 </div>
         )
     }
