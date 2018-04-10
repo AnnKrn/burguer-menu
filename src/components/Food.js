@@ -38,7 +38,7 @@ class Food extends Component {
                         </div>)
                     })}             
                 </div>
-                {/* <Jumbotron className = 'col-md-4'>
+                <Jumbotron className = 'col-md-4'>
                     <p>Total: {this.props.prueba2}</p>
                     <Button
                         className ='col-md-8'
@@ -47,7 +47,7 @@ class Food extends Component {
                         target="_blank">
                         <Link to='/Checkout'>Pagar</ Link>
                     </Button>
-                </Jumbotron> */}
+                </Jumbotron>
                 </div>
         )
     }

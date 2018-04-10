@@ -29,7 +29,7 @@ class App extends Component {
             {/* <Counter prueba2= {this.state.totalMount}/> */}
             <Switch>
               {/* <Route path = '/' component = {Food}/>*/}
-              <Route path = '/Counter' component = {Counter}/>
+              {/* <Route path = '/Counter' component = {Counter}/> */}
               
               <Route path = '/Checkout' component = {Checkout}/>
             </Switch>
