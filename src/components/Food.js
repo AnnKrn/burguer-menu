@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button} from 'react-bootstrap';
+import { Button, Jumbotron} from 'react-bootstrap';
 import Counter from './Counter';
 import Checkout from './Checkout';
 import {Link, Switch, Route} from 'react-router-dom'
@@ -12,6 +12,7 @@ class Food extends Component {
 
     render(){
         return(
+            <div>
             <div className = 'col-md-8'>
             <h3 className="text-center">{this.food.title}</h3>
                     {this.food.map( foo => {
@@ -31,13 +32,22 @@ class Food extends Component {
                                     bsStyle="success"
                                     bsSize="large"
                                     target="_blank">
-                                     <Link to='/Counter'>Agregar</ Link>
+                                    <Link to='/Counter'>Agregar</ Link>
                                 </Button>
                             </div>
                         </div>)
-                    })}
-
-                                    
+                    })}             
+                </div>
+                {/* <Jumbotron className = 'col-md-4'>
+                    <p>Total: {this.props.prueba2}</p>
+                    <Button
+                        className ='col-md-8'
+                        bsStyle="success"
+                        bsSize="large"
+                        target="_blank">
+                        <Link to='/Checkout'>Pagar</ Link>
+                    </Button>
+                </Jumbotron> */}
                 </div>
         )
     }

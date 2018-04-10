@@ -24,12 +24,14 @@ class App extends Component {
       <div>
         <Grid>
           <Row>
-            <Food dato = {data} prueba={this.handleClick} />
-            {/* <Checkout prueba2= {this.state.totalMount} />
-            <Counter prueba2= {this.state.totalMount}/> */}
+            <Food dato = {data} prueba={this.handleClick} prueba2= {this.state.totalMount}/>
+            {/* <Checkout prueba2= {this.state.totalMount} /> */}
+            {/* <Counter prueba2= {this.state.totalMount}/> */}
             <Switch>
-              <Route path = '/Food' component = {Food}/>
+              {/* <Route path = '/' component = {Food}/>*/}
               <Route path = '/Counter' component = {Counter}/>
+              
+              <Route path = '/Checkout' component = {Checkout}/>
             </Switch>
           </Row>
         </Grid>

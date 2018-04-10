@@ -9,7 +9,7 @@ class Checkout extends Component{
     render(){
         return(
             <h1>
-            Total: {this.props.prueba2}
+            Gracias por tu compra!!
             </h1>
         )
     }

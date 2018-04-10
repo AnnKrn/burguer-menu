@@ -20,9 +20,6 @@ class Counter extends Component {
                     target="_blank">
                      <Link to='/Checkout'>Pagar</ Link>
                 </Button>
-                <Switch>
-                    <Route path = '/Checkout' component = {Checkout}/>
-                </Switch>
             </Jumbotron>
         )
     }
