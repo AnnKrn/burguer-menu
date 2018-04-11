@@ -14,7 +14,7 @@ class Food extends Component {
         return(
             <div>
             <div className = 'col-md-8'>
-            <h3 className="text-center">{this.food.title}</h3>
+            <h3 className= 'text-center'>{ this.food.title }</h3>
                     {this.food.map( foo => {
                         return(
                         <div className="panel panel-default">
@@ -27,7 +27,7 @@ class Food extends Component {
                                 <Button
                                     // aqui detona evento
                                     onClick={this.props.prueba}
-                            
+
                                     className ='col-md-3'
                                     bsStyle="success"
                                     bsSize="large"
@@ -36,7 +36,7 @@ class Food extends Component {
                                 </Button>
                             </div>
                         </div>)
-                    })}             
+                    })}
                 </div>
                 <Jumbotron className = 'col-md-4'>
                     <p>Total: {this.props.prueba2}</p>
