@@ -4,6 +4,8 @@ import data from './data.js'
 import Food from './components/Food.js'
 import Counter from './components/Counter.js'
 import Checkout from './components/Checkout.js'
+import Header from './components/Header.js'
+import Footer from './components/Footer.js'
 import {Link, Switch, Route} from 'react-router-dom'
 
 class App extends Component {
@@ -22,6 +24,9 @@ class App extends Component {
   render() {
     return (
       <div>
+      <section>
+      <Header titulo="1" component = {Header} />
+      </section>
         <Grid>
           <Row>
             <Food dato = {data} prueba={this.handleClick} prueba2= {this.state.totalMount}/>
@@ -30,11 +35,14 @@ class App extends Component {
             <Switch>
               {/* <Route path = '/' component = {Food}/>*/}
               {/* <Route path = '/Counter' component = {Counter}/> */}
-              
+
               <Route path = '/Checkout' component = {Checkout}/>
             </Switch>
           </Row>
         </Grid>
+        <section>
+        <Footer titulo="2" component = {Footer} />
+        </section>
       </div>
     );
   }
