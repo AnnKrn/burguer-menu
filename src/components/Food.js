@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Jumbotron} from 'react-bootstrap';
+import { Button, Panel} from 'react-bootstrap';
 import Counter from './Counter';
 import Checkout from './Checkout';
 import {Link, Switch, Route} from 'react-router-dom'
@@ -7,7 +7,6 @@ import {Link, Switch, Route} from 'react-router-dom'
 class Food extends Component {
     constructor(props){
         super(props)
-        // this.food = props.dato.breakfast;
         // console.log(this.props.products)
         this.handleClick = this.handleClick.bind(this)
 
@@ -20,40 +19,44 @@ class Food extends Component {
         return(
             <div>
             <div className = 'col-md-9'>
-            <h3 className= 'text-center'></h3>
+            <div className= 'row'>
                     {this.props.products.map( foo => {
                         return(
-                            <div className="panel panel-default">
+                            <div className="panel panel-default col-md-4 col-xs-12">
                             <div className="panel-body">
-                                <div className ='col-md-9'>
+                                <div>
+                                    <img className="img-responsive" src={foo.photo}/>
+                                    <br/>
                                     <h3 className="panel-title">{foo.item}</h3>
                                     <br/>
-                                    <p >Precio: {foo.price}</p>
-                                    <p >Cantidad: {foo.cuantity}</p>
+                                    <p>Precio: {foo.price}</p>
+                                    <p>Cantidad: {foo.cuantity}</p>
                                 </div>
+                                <div className="col-md-6">
                                 <Button
                                     // aqui detona evento
                                     onClick={()=>{this.handleClick(foo.id)}}
 
-                                    className ='col-md-3'
-                                    bsStyle="success"
-                                    bsSize="large"
-                                    target="_blank">
+                                    className =''
+                                    bsStyle="danger"
+                                    bsSize="small">
                                     Quitar
                                 </Button>
+                                </div>
+                                <div className="col-md-5">
                                 <Button
                                     // aqui detona evento
-                                    onClick={this.handleClick}
-
-                                    className ='col-md-3'
-                                    bsStyle="success"
-                                    bsSize="large"
-                                    target="_blank">
+                                    onClick={()=>{this.handleClick(foo.id)}}
+                                    bsStyle="primary"
+                                    bsSize="small"
+                                    >
                                     Agregar
                                 </Button>
+                                </div>
                             </div>
                         </div>)
                     })}
+                    </div>
                 </div>
                 <Counter orden={this.props.products}/>
                 </div>
