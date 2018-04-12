@@ -7,47 +7,55 @@ import {Link, Switch, Route} from 'react-router-dom'
 class Food extends Component {
     constructor(props){
         super(props)
-        this.food = props.dato.breakfast;
+        // this.food = props.dato.breakfast;
+        // console.log(this.props.products)
+        this.handleClick = this.handleClick.bind(this)
+
     }
 
+    handleClick(id) {
+        console.log(id)
+      }
     render(){
         return(
             <div>
-            <div className = 'col-md-8'>
-            <h3 className= 'text-center'>{ this.food.title }</h3>
-                    {this.food.map( foo => {
+            <div className = 'col-md-9'>
+            <h3 className= 'text-center'></h3>
+                    {this.props.products.map( foo => {
                         return(
-                        <div className="panel panel-default">
+                            <div className="panel panel-default">
                             <div className="panel-body">
                                 <div className ='col-md-9'>
                                     <h3 className="panel-title">{foo.item}</h3>
                                     <br/>
                                     <p >Precio: {foo.price}</p>
+                                    <p >Cantidad: {foo.cuantity}</p>
                                 </div>
                                 <Button
                                     // aqui detona evento
-                                    onClick={this.props.prueba}
+                                    onClick={()=>{this.handleClick(foo.id)}}
 
                                     className ='col-md-3'
                                     bsStyle="success"
                                     bsSize="large"
                                     target="_blank">
-                                    <Link to='/Counter'>Agregar</ Link>
+                                    Quitar
+                                </Button>
+                                <Button
+                                    // aqui detona evento
+                                    onClick={this.handleClick}
+
+                                    className ='col-md-3'
+                                    bsStyle="success"
+                                    bsSize="large"
+                                    target="_blank">
+                                    Agregar
                                 </Button>
                             </div>
                         </div>)
                     })}
                 </div>
-                <Jumbotron className = 'col-md-4'>
-                    <p>Total: {this.props.prueba2}</p>
-                    <Button
-                        className ='col-md-8'
-                        bsStyle="success"
-                        bsSize="large"
-                        target="_blank">
-                        <Link to='/Checkout'>Pagar</ Link>
-                    </Button>
-                </Jumbotron>
+                <Counter orden={this.props.products}/>
                 </div>
         )
     }
