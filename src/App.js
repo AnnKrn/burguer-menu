@@ -12,14 +12,14 @@ class App extends Component {
     super()
     this.state = {
       products:[
-        {id: 1, item: 'Cafe americano', price: '5', cuantity:0},
-        {id: 2, item: 'Cafe con leche ', price: '7',cuantity:0},
-        {id: 3, item: 'Sandwich de jamón y queso', price: '10',cuantity:0},
-        {id: 4, item: 'Jugo natural', price: '7',cuantity:0},
-        {id: 5, item: 'Especial de pollo', price: '30',cuantity:0},
-        {id: 6, item: 'Carnivora de res', price: '35',cuantity:0},
-        {id: 7, item: 'Vegetariana lovers', price: '35',cuantity:0},
-        {id: 8, item: 'Pizza burguer', price: '35',cuantity:0}
+        {id: 1, item: 'Cafe americano', price: '5', cuantity:0, photo:'https://www.whatsuplife.in/kolkata/blog/wp-content/uploads/2017/11/coffee-feat.jpg'},
+        {id: 2, item: 'Café con leche', price: '7',cuantity:0,photo:'https://cdn1.medicalnewstoday.com/content/images/articles/270202-coffee-splash.jpg'},        
+        {id: 3, item: 'Sandwich de jamón y queso', price: '10',cuantity:0,photo:''},
+        {id: 4, item: 'Jugo natural', price: '7',cuantity:0,photo:''},
+        {id: 5, item: 'Especial de pollo', price: '30',cuantity:0,photo:''},
+        {id: 6, item: 'Carnivora de res', price: '35',cuantity:0,photo:''},
+        {id: 7, item: 'Vegetariana lovers', price: '35',cuantity:0,photo:''},
+        {id: 8, item: 'Pizza burguer', price: '35',cuantity:0,photo:''}
       ]
     }
     // console.log(this.state.products)
