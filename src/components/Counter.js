@@ -10,10 +10,9 @@ class Counter extends Component {
     }
     render(){
         return(
-            <Jumbotron className = 'col-md-4'>
-                <p>Total: {this.props.prueba2}</p>
+            <Jumbotron className = 'col-md-3'>
+                <p>Total: {this.props.comida}</p>
                 <Button
-                   
                     className ='col-md-8'
                     bsStyle="success"
                     bsSize="large"

@@ -29,12 +29,12 @@ class App extends Component {
       </section>
         <Grid>
           <Row>
-            <Food dato = {data} prueba={this.handleClick} prueba2= {this.state.totalMount}/>
+            {/* <Food dato = {data} prueba={this.handleClick} prueba2= {this.state.totalMount}/> */}
             {/* <Checkout prueba2= {this.state.totalMount} /> */}
             {/* <Counter prueba2= {this.state.totalMount}/> */}
             <Switch>
-              {/* <Route path = '/' component = {Food}/>*/}
-              {/* <Route path = '/Counter' component = {Counter}/> */}
+              <Route path = '/' exact render ={ () => {return(<Food dato = {data} prueba={this.handleClick} prueba2= {this.state.totalMount}/>)}}/>
+              {/* <Route path = '/Counter' exact render = {() => {return(<Counter />)}}/> */}
 
               <Route path = '/Checkout' component = {Checkout}/>
             </Switch>
