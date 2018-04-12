@@ -7,16 +7,21 @@ import {Link, Switch, Route} from 'react-router-dom'
 class Food extends Component {
     constructor(props){
         super(props)
-        this.food = props.dato.breakfast;
-        console.log()
+        // this.food = props.dato.breakfast;
+        // console.log(this.props.products)
+        this.handleClick = this.handleClick.bind(this)
+
     }
 
+    handleClick(id) {
+        console.log(id)
+      }
     render(){
         return(
             <div>
             <div className = 'col-md-9'>
-            <h3 className= 'text-center'>{ this.food.title }</h3>
-                    {this.food.map( foo => {
+            <h3 className= 'text-center'></h3>
+                    {this.props.products.map( foo => {
                         return(
                             <div className="panel panel-default">
                             <div className="panel-body">
@@ -24,10 +29,21 @@ class Food extends Component {
                                     <h3 className="panel-title">{foo.item}</h3>
                                     <br/>
                                     <p >Precio: {foo.price}</p>
+                                    <p >Cantidad: {foo.cuantity}</p>
                                 </div>
                                 <Button
                                     // aqui detona evento
-                                    onClick={this.props.prueba}
+                                    onClick={()=>{this.handleClick(foo.id)}}
+
+                                    className ='col-md-3'
+                                    bsStyle="success"
+                                    bsSize="large"
+                                    target="_blank">
+                                    Quitar
+                                </Button>
+                                <Button
+                                    // aqui detona evento
+                                    onClick={this.handleClick}
 
                                     className ='col-md-3'
                                     bsStyle="success"
@@ -39,7 +55,7 @@ class Food extends Component {
                         </div>)
                     })}
                 </div>
-                <Counter comida={this.props.prueba2}/>
+                <Counter orden={this.props.products}/>
                 </div>
         )
     }
