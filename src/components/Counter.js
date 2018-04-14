@@ -7,12 +7,19 @@ import {Link, Switch, Route} from 'react-router-dom'
 class Counter extends Component {
     constructor(props){
         super(props)
-        // console.log(this.props.orden)
     }
     render(){
+        console.log(this.props.order)
         return(
             <Jumbotron className = 'col-md-3'>
-                <p>Total: {this.props.orden[0].item}</p>
+                {this.props.order.map(item =>{
+                    return(
+                        <div>
+                            <p>{item.newItem}</p>
+                            <p>{item.newPrice}</p>
+                        </div>
+                    )
+                })}
             
                 <Button
                     className ='col-md-8'
