@@ -11,7 +11,7 @@ class Counter extends Component {
     render(){
         console.log(this.props.order)
         return(
-            <Jumbotron className = 'col-md-3'>
+            <Jumbotron className = 'col-md-10 col-md-offset-1'>
                 {this.props.order.map(item =>{
                     return(
                         <div>
@@ -26,7 +26,7 @@ class Counter extends Component {
                     bsStyle="success"
                     bsSize="large"
                     target="_blank">
-                     <Link to='/Checkout'>Pagar</ Link>
+                     <Link to='/Final'>Pagar</ Link>
                 </Button>
             </Jumbotron>
         )
