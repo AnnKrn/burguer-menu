@@ -8,18 +8,31 @@ class Food extends Component {
     constructor(props){
         super(props)
         this.newChange = this.newChange.bind(this)
+        this.trigerSum = this.trigerSum.bind(this)
+        
     }
 
     newChange = (event)=>{
-        this.props.handleClick(event.target.id, event.target.value)
-        console.log()
+        this.props.addAndDelete(event.target.id, event.target.value)
     }
     
+    trigerSum = () => {
+        this.props.totalOrderPrice()
+    }
     render(){
         return(
             <div> 
-            <div className = 'col-md-12'>
-                <div className= 'row'>
+                <Link to='/Counter'>
+                    <Button
+                    onClick={this.trigerSum}
+                    bsStyle="primary"
+                    bsSize="small"
+                    >
+                    Confirma tu orden  
+                    </Button>
+                </ Link>
+                <div className = 'col-md-12'>
+                    <div className= 'row'>  
                     {this.props.products.map( foo => {
                         return(
                             <div className="panel panel-default col-md-4 col-xs-12">

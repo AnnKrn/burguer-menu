@@ -21,23 +21,45 @@ class App extends Component {
         {id: 7, item: 'Vegetariana lovers', price: '35',cuantity:0,photo:''},
         {id: 8, item: 'Pizza burguer', price: '35',cuantity:0,photo:''}
       ],
-      order:[]
-
+      order:[],
+      totalPrice:0
+      
     }
-    this.handleClick = this.handleClick.bind(this)
-    
+    this.addAndDelete = this.addAndDelete.bind(this)
+    this.totalOrderPrice = this.totalOrderPrice.bind(this)
+    this.otherOrder = this.otherOrder.bind(this)
   }
   
-  handleClick(id, value) {
+  otherOrder(){
+    this.setState({
+      order:[],
+      totalPrice:0
+    })
+  }
+
+  totalOrderPrice(){
+    let pricesOrder = this.state.order.map(item=>{
+      return parseFloat (item.newPrice)
+    })
+    console.log(pricesOrder)
+    
+    // Total productos
+    let totalPrice = pricesOrder.reduce((valorAnterior, valorActual)=>{
+      // console.log(valorAnterior + valorActual)
+      return valorAnterior + valorActual
+    },0)
+    this.setState({
+      totalPrice: totalPrice
+    })
+  }
+  addAndDelete(id, value) {
     const arrayProducts= this.state.products
     // Agregar productos
     let newProduct=[]
     let stateOrder = this.state.order
-
     // Quitar productos
     let toDelete = {}
-    console.log(this.state.order)
-    
+
     if(value == 'agregar'){
       arrayProducts.forEach(item => {
         if(id == item.id){
@@ -48,12 +70,9 @@ class App extends Component {
             }]
         }
       })
-
       this.setState({
         order: [...stateOrder, ...newProduct]
       })
-      console.log(this.state.order)
-      
     } else if (value == 'quitar') {      
       stateOrder.forEach(item => {
         if(id == item.id){
@@ -67,32 +86,38 @@ class App extends Component {
       let deletedOrder = stateOrder.filter((item)=>{
         return item.id !== toDelete.id
       })
-      
       this.setState({
         order:deletedOrder
       })
-      console.log(this.state.order)
     }
-
-    
-    
+    // totalOrderPrice(stateOrder)
   }
+
+  
+
+
   render() {
     return (
       <div>
       <section>
-      <Header titulo="1" component = {Header} />
+      <Header titulo="1"/>
       </section>
         <Grid>
           <Row>
             <Switch>
               <Route path = '/' exact render ={ () => {return(<Food 
-                handleClick={this.handleClick} 
+                addAndDelete={this.addAndDelete} 
                 products = {this.state.products} 
+                totalPrice={this.state.totalPrice}
+                totalOrderPrice={this.totalOrderPrice}
                 />)}}/>
-              <Route path = '/Checkout' exact render = {()=>{return(<Counter 
-                order={this.state.order}/>)}}/>
-              <Route path = '/Final' component = {Checkout}/>
+              <Route path = '/Counter' exact render = {()=>{return(<Counter 
+                order={this.state.order}
+                totalPrice={this.state.totalPrice}
+                />)}}/>
+              <Route path = '/Checkout' exact render = {() => {return (<Checkout
+                otherOrder={this.otherOrder}
+                />)}}/>
             </Switch>
           </Row>
         </Grid>
