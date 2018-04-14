@@ -7,17 +7,16 @@ import {Link, Switch, Route} from 'react-router-dom'
 class Food extends Component {
     constructor(props){
         super(props)
-        // console.log(this.props.products)
-        this.handleClick = this.handleClick.bind(this)
-
+        this.newChange = this.newChange.bind(this)
     }
 
-    handleClick(id) {
-        console.log(id)
-      }
+    newChange = (event)=>{
+        this.props.handleClick(event.target.id)
+    }
+    
     render(){
         return(
-            <div>
+            <div> 
             <div className = 'col-md-9'>
             <div className= 'row'>
                     {this.props.products.map( foo => {
@@ -32,25 +31,25 @@ class Food extends Component {
                                     <p>Precio: {foo.price}</p>
                                     <p>Cantidad: {foo.cuantity}</p>
                                 </div>
-                                <div className="col-md-6">
-                                <Button
-                                    // aqui detona evento
-                                    onClick={()=>{this.handleClick(foo.id)}}
-
-                                    className =''
-                                    bsStyle="danger"
-                                    bsSize="small">
-                                    Quitar
-                                </Button>
-                                </div>
                                 <div className="col-md-5">
                                 <Button
-                                    // aqui detona evento
-                                    onClick={()=>{this.handleClick(foo.id)}}
+                                    onClick={this.newChange}
+                                    id={foo.id}
                                     bsStyle="primary"
                                     bsSize="small"
                                     >
                                     Agregar
+                                </Button>
+                                </div>
+                                <div className="col-md-6">
+                                <Button
+                                    // aqui detona evento
+                                    // onClick={this.newChange}
+                                    id={foo.id}
+                                    className =''
+                                    bsStyle="danger"
+                                    bsSize="small">
+                                    Quitar
                                 </Button>
                                 </div>
                             </div>
@@ -58,7 +57,7 @@ class Food extends Component {
                     })}
                     </div>
                 </div>
-                <Counter orden={this.props.products}/>
+                <Counter order={this.props.order}/>
                 </div>
         )
     }

@@ -20,11 +20,31 @@ class App extends Component {
         {id: 6, item: 'Carnivora de res', price: '35',cuantity:0,photo:''},
         {id: 7, item: 'Vegetariana lovers', price: '35',cuantity:0,photo:''},
         {id: 8, item: 'Pizza burguer', price: '35',cuantity:0,photo:''}
-      ]
-    }
-    // console.log(this.state.products)
-  }
+      ],
+      order:[]
 
+    }
+    this.handleClick = this.handleClick.bind(this)
+    
+  }
+  
+  handleClick(id) {
+    const arrayProducts= this.state.products
+    let newProduct=[]
+    arrayProducts.forEach(item => {
+      if(id == item.id){
+          newProduct =[{
+            newItem:item.item,
+            newPrice:item.price
+          }]
+      }
+    })
+    let stateOrder = this.state.order
+    
+    this.setState({
+      order: [...stateOrder, ...newProduct]
+    })
+  }
   render() {
     return (
       <div>
@@ -34,7 +54,7 @@ class App extends Component {
         <Grid>
           <Row>
             <Switch>
-              <Route path = '/' exact render ={ () => {return(<Food products = {this.state.products}/>)}}/>
+              <Route path = '/' exact render ={ () => {return(<Food handleClick={this.handleClick} products = {this.state.products} order={this.state.order}/>)}}/>
               <Route path = '/Checkout' component = {Checkout}/>
             </Switch>
           </Row>
