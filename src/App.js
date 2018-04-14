@@ -28,22 +28,54 @@ class App extends Component {
     
   }
   
-  handleClick(id) {
+  handleClick(id, value) {
     const arrayProducts= this.state.products
+    // Agregar productos
     let newProduct=[]
-    arrayProducts.forEach(item => {
-      if(id == item.id){
-          newProduct =[{
-            newItem:item.item,
-            newPrice:item.price
-          }]
-      }
-    })
     let stateOrder = this.state.order
+
+    // Quitar productos
+    let toDelete = {}
+    console.log(this.state.order)
     
-    this.setState({
-      order: [...stateOrder, ...newProduct]
-    })
+    if(value == 'agregar'){
+      arrayProducts.forEach(item => {
+        if(id == item.id){
+            newProduct =[{
+              id:item.id,
+              newItem:item.item,
+              newPrice:item.price
+            }]
+        }
+      })
+
+      this.setState({
+        order: [...stateOrder, ...newProduct]
+      })
+      console.log(this.state.order)
+      
+    } else if (value == 'quitar') {      
+      stateOrder.forEach(item => {
+        if(id == item.id){
+          toDelete = {
+            id:item.id,
+            newItem:item.newItem,
+            newPrice:item.newPrice
+          }
+        }
+      })
+      let deletedOrder = stateOrder.filter((item)=>{
+        return item.id !== toDelete.id
+      })
+      
+      this.setState({
+        order:deletedOrder
+      })
+      console.log(this.state.order)
+    }
+
+    
+    
   }
   render() {
     return (
@@ -54,8 +86,13 @@ class App extends Component {
         <Grid>
           <Row>
             <Switch>
-              <Route path = '/' exact render ={ () => {return(<Food handleClick={this.handleClick} products = {this.state.products} order={this.state.order}/>)}}/>
-              <Route path = '/Checkout' component = {Checkout}/>
+              <Route path = '/' exact render ={ () => {return(<Food 
+                handleClick={this.handleClick} 
+                products = {this.state.products} 
+                />)}}/>
+              <Route path = '/Checkout' exact render = {()=>{return(<Counter 
+                order={this.state.order}/>)}}/>
+              <Route path = '/Final' component = {Checkout}/>
             </Switch>
           </Row>
         </Grid>

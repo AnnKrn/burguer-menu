@@ -11,14 +11,15 @@ class Food extends Component {
     }
 
     newChange = (event)=>{
-        this.props.handleClick(event.target.id)
+        this.props.handleClick(event.target.id, event.target.value)
+        console.log()
     }
     
     render(){
         return(
             <div> 
-            <div className = 'col-md-9'>
-            <div className= 'row'>
+            <div className = 'col-md-12'>
+                <div className= 'row'>
                     {this.props.products.map( foo => {
                         return(
                             <div className="panel panel-default col-md-4 col-xs-12">
@@ -31,9 +32,10 @@ class Food extends Component {
                                     <p>Precio: {foo.price}</p>
                                     <p>Cantidad: {foo.cuantity}</p>
                                 </div>
-                                <div className="col-md-5">
+                                <div className="col-md-6">
                                 <Button
                                     onClick={this.newChange}
+                                    value ='agregar'
                                     id={foo.id}
                                     bsStyle="primary"
                                     bsSize="small"
@@ -44,9 +46,9 @@ class Food extends Component {
                                 <div className="col-md-6">
                                 <Button
                                     // aqui detona evento
-                                    // onClick={this.newChange}
+                                    onClick={this.newChange}
+                                    value ='quitar'
                                     id={foo.id}
-                                    className =''
                                     bsStyle="danger"
                                     bsSize="small">
                                     Quitar
@@ -57,8 +59,7 @@ class Food extends Component {
                     })}
                     </div>
                 </div>
-                <Counter order={this.props.order}/>
-                </div>
+            </div>
         )
     }
 }
