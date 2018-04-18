@@ -13,6 +13,7 @@ class Food extends Component {
     }
 
     newChange = (event)=>{
+        this.props.sumOrDecreaseCounter(event.target.id, event.target.value)
         this.props.addAndDelete(event.target.id, event.target.value)
     }
     

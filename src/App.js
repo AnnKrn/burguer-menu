@@ -28,6 +28,22 @@ class App extends Component {
     this.addAndDelete = this.addAndDelete.bind(this)
     this.totalOrderPrice = this.totalOrderPrice.bind(this)
     this.otherOrder = this.otherOrder.bind(this)
+    this.sumOrDecreaseCounter = this.sumOrDecreaseCounter.bind(this)
+  }
+
+  sumOrDecreaseCounter(id, value){
+
+    let products = this.state.products;
+
+
+    if(value === "agregar"){
+     let itemToIncrease = products.find(item =>{
+       return item.id === id
+     })
+
+     console.log(itemToIncrease)
+    
+    }
   }
 
   otherOrder(){
@@ -52,18 +68,20 @@ class App extends Component {
       totalPrice: totalPrice
     })
   }
+
+
   addAndDelete(id, value) {
     const arrayProducts= this.state.products
     // Agregar productos
-    let newProduct=[]
+    let newProduct= []
     let stateOrder = this.state.order
     // Quitar productos
     let toDelete = {}
 
-    if(value == 'agregar'){
+    if(value === 'agregar'){
       arrayProducts.forEach(item => {
-        if(id == item.id){
-            newProduct =[{
+        if(id === item.id){
+            newProduct = [{
               id:item.id,
               newItem:item.item,
               newPrice:item.price
@@ -73,9 +91,9 @@ class App extends Component {
       this.setState({
         order: [...stateOrder, ...newProduct]
       })
-    } else if (value == 'quitar') {
+    } else if (value === 'quitar') {
       stateOrder.forEach(item => {
-        if(id == item.id){
+        if(id === item.id){
           toDelete = {
             id:item.id,
             newItem:item.newItem,
@@ -93,11 +111,10 @@ class App extends Component {
     // totalOrderPrice(stateOrder)
   }
 
-
-
-
   render() {
+
     return (
+
       <div>
       <section>
       <Header titulo="1"/>
@@ -105,19 +122,24 @@ class App extends Component {
         <Grid>
           <Row>
             <Switch>
+
               <Route path = '/' exact render ={ () => {return(<Food
+                sumOrDecreaseCounter={this.sumOrDecreaseCounter}
                 addAndDelete={this.addAndDelete}
                 products = {this.state.products}
                 totalPrice={this.state.totalPrice}
                 totalOrderPrice={this.totalOrderPrice}
                 />)}}/>
+
               <Route path = '/Counter' exact render = {()=>{return(<Counter
                 order={this.state.order}
                 totalPrice={this.state.totalPrice}
                 />)}}/>
+
               <Route path = '/Checkout' exact render = {() => {return (<Checkout
                 otherOrder={this.otherOrder}
                 />)}}/>
+
             </Switch>
           </Row>
         </Grid>
