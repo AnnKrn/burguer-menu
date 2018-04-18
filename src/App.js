@@ -33,16 +33,21 @@ class App extends Component {
 
   sumOrDecreaseCounter(id, value){
 
-    let products = this.state.products;
+    let productsArray = this.state.products;
+    productsArray= [...productsArray]
 
-
+    console.log(productsArray)
     if(value === "agregar"){
-     let itemToIncrease = products.find(item =>{
-       return item.id === id
+     let itemToIncrease = productsArray.find(item =>{
+       console.log(id)
+        return (item.id === id)
      })
 
+    //  itemToIncrease = itemToIncrease.cuantity +1
+    //  this.setState({
+    //     products : []
+    //  })
      console.log(itemToIncrease)
-    
     }
   }
 
