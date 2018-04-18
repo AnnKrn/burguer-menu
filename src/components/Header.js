@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from './images/queen.png';
 import './css/Header.css'
-
+import { Button } from 'react-bootstrap';
 
 
 class Header extends Component {
