@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Link, Switch, Route} from 'react-router-dom';
 
 class Checkout extends Component{
     constructor(props){
