@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {Jumbotron, Button} from 'react-bootstrap';
-import Checkout from './Checkout';
-import {Link, Switch, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
 class Counter extends Component {
     constructor(props){
-        super(props)
+        super()
     }
     render(){        
         return(

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Panel} from 'react-bootstrap';
-import Counter from './Counter';
-import Checkout from './Checkout';
-import {Link, Switch, Route} from 'react-router-dom'
+import { Button } from 'react-bootstrap';
+import {Link} from 'react-router-dom'
 
 class Food extends Component {
     constructor(props){
@@ -34,12 +32,12 @@ class Food extends Component {
                 </ Link>
                 <div className = 'col-md-12'>
                     <div className= 'row'>  
-                    {this.props.products.map( foo => {
+                    {this.props.products.map( (foo, i) => {
                         return(
-                            <div className="panel panel-default col-md-4 col-xs-12">
+                            <div className="panel panel-default col-md-4 col-xs-12" key={i}>
                             <div className="panel-body">
                                 <div>
-                                    <img className="img-responsive" src={foo.photo}/>
+                                    <img className="img-responsive" src={foo.photo} alt="{foo.item}"/>
                                     <br/>
                                     <h3 className="panel-title">{foo.item}</h3>
                                     <br/>

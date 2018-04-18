@@ -5,7 +5,7 @@ import Counter from './components/Counter.js'
 import Checkout from './components/Checkout.js'
 import Header from './components/Header.js'
 import Footer from './components/Footer.js'
-import {Link, Switch, Route} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 
 class App extends Component {
   constructor(){
